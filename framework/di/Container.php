@@ -379,6 +379,9 @@ class Container extends Component
             return $reflection->newInstanceArgs($dependencies);
         } else {
             $object = $reflection->newInstanceArgs($dependencies);
+            //$config 第一个元素为 'class' =>'classname' 他创建属性为无效的是否要过滤掉
+            //$config first element for the =>'classname''class' he created the attribute is invalid whether to filter out
+            $config = array_splice($config,0,1);
             foreach ($config as $name => $value) {
                 $object->$name = $value;
             }
