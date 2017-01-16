@@ -32,6 +32,8 @@ use yii\db\ActiveRecord;
  *             'class' => AttributeBehavior::className(),
  *             'attributes' => [
  *                 ActiveRecord::EVENT_BEFORE_INSERT => 'attribute1',
+ *                 //Custom value for multiple attribute value
+ *                 ActiveRecord::EVENT_BEFORE_INSERT => ['attribute1',['attribute2' =>'value2']]
  *                 ActiveRecord::EVENT_BEFORE_UPDATE => 'attribute2',
  *             ],
  *             'value' => function ($event) {
@@ -119,6 +121,11 @@ class AttributeBehavior extends Behavior
                 // ignore attribute names which are not string (e.g. when set by TimestampBehavior::updatedAtAttribute)
                 if (is_string($attribute)) {
                     $this->owner->$attribute = $value;
+                   //Custom value for multiple attribute value 
+                }  elseif (is_array($attribute)) {
+                    foreach ($attribute as $key => $attribut) {
+                        $this->owner->$key = $attribut;
+                    }
                 }
             }
         }
