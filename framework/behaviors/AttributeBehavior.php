@@ -33,7 +33,7 @@ use yii\db\ActiveRecord;
  *             'attributes' => [
  *                 ActiveRecord::EVENT_BEFORE_INSERT => 'attribute1',
  *                 //Custom value for multiple attribute value
- *                 ActiveRecord::EVENT_BEFORE_INSERT => ['attribute1',['attribute2' =>'value2']]
+ *                 ActiveRecord::EVENT_BEFORE_INSERT => ['attribute3',['attribute4' =>'value4']]
  *                 ActiveRecord::EVENT_BEFORE_UPDATE => 'attribute2',
  *             ],
  *             'value' => function ($event) {
